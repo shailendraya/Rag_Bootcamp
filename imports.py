@@ -1,20 +1,43 @@
+# ============================================================
 # Standard Library
+# ============================================================
+
 import os
+import io
 import json
 import time
+import base64
 from pathlib import Path
 from datetime import datetime
 
+# ============================================================
 # Environment
+# ============================================================
+
 from dotenv import load_dotenv
 
+# ============================================================
 # Redis
+# ============================================================
+
 import redis
 
-# LangChain
+# ============================================================
+# LangChain Core
+# ============================================================
+
 from langchain_core.documents import Document
-from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
-from langchain_core.output_parsers import StrOutputParser
+
+from langchain_core.prompts import (
+    PromptTemplate,
+    ChatPromptTemplate,
+    SystemMessagePromptTemplate,
+)
+
+from langchain_core.output_parsers import (
+    StrOutputParser,
+)
+
 from langchain_core.runnables import (
     RunnableLambda,
     RunnableMap,
@@ -23,34 +46,23 @@ from langchain_core.runnables import (
     RunnableBranch,
 )
 
+# ============================================================
+# Chat Models
+# ============================================================
+
 from langchain.chat_models import init_chat_model
+from openai import OpenAI
+
+# ============================================================
+# Embeddings
+# ============================================================
 
 from langchain_openai import OpenAIEmbeddings
 from langchain_huggingface import HuggingFaceEmbeddings
 
-from langchain_community.document_loaders import (
-    TextLoader,
-    CSVLoader,
-    PyPDFLoader,
-    DirectoryLoader,
-)
-
-from langchain_text_splitters import (
-    RecursiveCharacterTextSplitter,
-    CharacterTextSplitter,
-    TokenTextSplitter,
-)
-
-from langchain_experimental.text_splitter import SemanticChunker
-
-from langchain_community.vectorstores import FAISS
-from langchain_chroma import Chroma
-
-from langchain_community.retrievers import BM25Retriever
-from langchain_classic.retrievers import EnsembleRetriever
-
-from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
+# ============================================================
+# Document Loaders
+# ============================================================
 
 from langchain_community.document_loaders import (
     TextLoader,
@@ -60,7 +72,77 @@ from langchain_community.document_loaders import (
     WikipediaLoader,
 )
 
-from langchain_core.prompts import (
-    ChatPromptTemplate,
-    SystemMessagePromptTemplate,
+# ============================================================
+# Text Splitters
+# ============================================================
+
+from langchain_text_splitters import (
+    RecursiveCharacterTextSplitter,
+    CharacterTextSplitter,
+    TokenTextSplitter,
 )
+
+from langchain_experimental.text_splitter import (
+    SemanticChunker,
+)
+
+# ============================================================
+# Vector Stores
+# ============================================================
+
+from langchain_community.vectorstores import FAISS
+from langchain_chroma import Chroma
+
+# ============================================================
+# Retrievers
+# ============================================================
+
+from langchain_community.retrievers import BM25Retriever
+from langchain_classic.retrievers import EnsembleRetriever
+
+# ============================================================
+# Sentence Transformers
+# ============================================================
+
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+
+# ============================================================
+# PDF Processing (Multimodal)
+# ============================================================
+
+import fitz  # PyMuPDF
+
+# ============================================================
+# Image Processing (Multimodal)
+# ============================================================
+
+from PIL import Image
+
+# ============================================================
+# Deep Learning
+# ============================================================
+
+import torch
+import torchvision
+
+# ============================================================
+# Hugging Face - CLIP (Image Embeddings)
+# ============================================================
+
+from transformers import (
+    CLIPModel,
+    CLIPProcessor,
+)
+
+# ============================================================
+# Optional Visualization (Useful for tutorials)
+# ============================================================
+
+import matplotlib.pyplot as plt
+
+# ============================================================
+# Utility
+# ============================================================
+
+from typing import List, Dict, Any
