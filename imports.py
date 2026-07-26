@@ -51,3 +51,16 @@ from langchain_classic.retrievers import EnsembleRetriever
 
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
+
+from langchain_community.document_loaders import (
+    TextLoader,
+    CSVLoader,
+    PyPDFLoader,
+    DirectoryLoader,
+    WikipediaLoader,
+)
+
+from langchain_core.prompts import (
+    ChatPromptTemplate,
+    SystemMessagePromptTemplate,
+)
