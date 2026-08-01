@@ -15,12 +15,18 @@ from datetime import datetime
 # ============================================================
 
 from dotenv import load_dotenv
-
+from pydantic import BaseModel
 # ============================================================
 # Redis
 # ============================================================
 
 import redis
+
+# ============================================================
+# LangGraph Core
+# ============================================================
+from langgraph.graph import StateGraph, END
+
 
 # ============================================================
 # LangChain Core
@@ -66,6 +72,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 
 from langchain_community.document_loaders import (
     TextLoader,
+    WebBaseLoader,
     CSVLoader,
     PyPDFLoader,
     DirectoryLoader,
@@ -91,7 +98,7 @@ from langchain_experimental.text_splitter import (
 # ============================================================
 
 from langchain_community.vectorstores import FAISS
-from langchain_chroma import Chroma
+# from langchain_chroma import Chroma
 
 # ============================================================
 # Retrievers
@@ -104,8 +111,8 @@ from langchain_classic.retrievers import EnsembleRetriever
 # Sentence Transformers
 # ============================================================
 
-from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
+# from sentence_transformers import SentenceTransformer
+# from sklearn.metrics.pairwise import cosine_similarity
 
 # ============================================================
 # PDF Processing (Multimodal)
@@ -123,23 +130,23 @@ from PIL import Image
 # Deep Learning
 # ============================================================
 
-import torch
-import torchvision
+# import torch
+# import torchvision
 
 # ============================================================
 # Hugging Face - CLIP (Image Embeddings)
 # ============================================================
 
-from transformers import (
-    CLIPModel,
-    CLIPProcessor,
-)
+# from transformers import (
+#     CLIPModel,
+#     CLIPProcessor,
+# )
 
 # ============================================================
 # Optional Visualization (Useful for tutorials)
 # ============================================================
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 # ============================================================
 # Utility
