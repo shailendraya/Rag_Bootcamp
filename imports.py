@@ -153,3 +153,8 @@ from PIL import Image
 # ============================================================
 
 from typing import List, Dict, Any
+
+from langchain_community.document_loaders.youtube import YoutubeLoader
+
+from langchain_community.tools import WikipediaQueryRun
+from langchain_community.utilities import WikipediaAPIWrapper
